@@ -42,15 +42,3 @@ Inicie o Servidor Appium, a flag --allow-insecure=adb_shell permite comandos ADB
   `appium --allow-insecure=adb_shell`
 ```
 
-
-
-
-
-## Running Tests
-
-Inicie o Servidor Appium, a flag --allow-insecure=adb_shell permite comandos ADB através do Appium/Robot Framework:
-
-```bash
-  `appium --allow-insecure=adb_shell`
-```
-
