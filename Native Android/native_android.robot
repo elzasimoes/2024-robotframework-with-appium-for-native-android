@@ -1,7 +1,7 @@
 *** Settings ***
 Resource        ./resources/native_android.resource
-# Suite Setup      Open Application
-# Suite Teardown      Close Application
+Suite Setup      Open Application
+Suite Teardown      Close Application
 
 *** Test Cases ***
 01 - Verify Samsung Browser
@@ -11,7 +11,12 @@ Resource        ./resources/native_android.resource
     Execute Adb Shell       am start -a android.settings.SETTINGS
     Wait Until Page Contains    text=Conexões
     Capture Page Screenshot
-    # Click Element    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[3]/android.widget.RelativeLayout
-    Execute Adb Shell    shell am start -n com.sec.android.app.sbrowser/com.sec.android.app.sbrowser.SBrowserMainActivity
+    Execute Adb Shell    am start -n com.sec.android.app.sbrowser/com.sec.android.app.sbrowser.SBrowserMainActivity
+    Wait Until Page Contains    text=Google
+    Click Element    id=com.sec.android.app.sbrowser:id/location_bar_edit_text
+    Input Text    id=com.sec.android.app.sbrowser:id/location_bar_edit_text    text=www.google.com
+    Execute Adb Shell    input keyevent ENTER
+
+
     
     
