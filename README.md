@@ -5,7 +5,9 @@
 
 1. Appium: Certifique-se de ter o Appium instalado em sua máquina. Você pode instalá-lo usando o npm (Node Package Manager). Execute o seguinte comando no terminal:
 
-`npm install -g appium`
+```bash
+npm install -g appium
+```
 
 2. Android SDK: Instale o Android Studio ou apenas o Android SDK para garantir que as dependências necessárias estejam presentes.
 
@@ -27,12 +29,15 @@ Adicione o caminho do Android SDK nas variáveis de ambiente.
 
 Verifique se os comandos adb estão funcionando normalmente com o seguinte comando no terminal:
 
-`adb devices`
+```bash
+adb devices
+```
 
 5. Robot Framework: Instale o Robot Framework e a biblioteca AppiumLibrary. Execute os seguintes comandos:
-
-`pip install robotframework`
-`pip install robotframework-appiumlibrary`
+   
+```bash
+pip install robotframework robotframework-appiumlibrary
+```
 
 ## Running Tests
 
