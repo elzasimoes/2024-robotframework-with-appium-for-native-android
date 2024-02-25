@@ -38,7 +38,5 @@ Verifique se os comandos adb estão funcionando normalmente com o seguinte coman
 
 Inicie o Servidor Appium, a flag --allow-insecure=adb_shell permite comandos ADB através do Appium/Robot Framework:
 
-```bash
   `appium --allow-insecure=adb_shell`
-```
 
