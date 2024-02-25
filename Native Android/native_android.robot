@@ -1,7 +1,9 @@
 *** Settings ***
 Resource        ./resources/native_android.resource
-Suite Setup      Open Application    ${URL}        platformName=${PLATFORM_NAME}        
-Suite Teardown      Close All Apps
+Suite Setup      Open Application    ${URL}        platformName=${PLATFORM_NAME}
+
+Test Setup     Initialize Test
+Test Teardown    Close All Apps
 
 *** Test Cases ***
 01 - Verify Samsung Browser 

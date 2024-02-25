@@ -10,6 +10,19 @@ ${expected_model}    SM-F731B
 
 *** Keywords ***
 
+Initialize Test
+    Go To Home Screen
+    ConnectWifi
+    Close All Apps
+
+ConnectWifi
+    ${network_status}    Get Network Connection Status
+    IF    ${network_status} == 2
+        Pass Execution    Wifi Connected
+    ELSE
+        Set Network Connection Status    connectionStatus=6
+    END
+    
 Go To Home Screen
     Execute Adb Shell    input keyevent KEYCODE_HOME
 
@@ -20,6 +33,7 @@ Open Settings
 Open Samsung Browser
     Execute Adb Shell    am start -n com.sec.android.app.sbrowser/com.sec.android.app.sbrowser.SBrowserMainActivity
     Wait Until Element Is Visible    id=com.sec.android.app.sbrowser:id/location_bar_edit_text
+    
 Search Google in Samsung Browser
     Click Element    id=com.sec.android.app.sbrowser:id/location_bar_edit_text
     Input Text    id=com.sec.android.app.sbrowser:id/location_bar_edit_text    text=www.google.com
@@ -40,6 +54,7 @@ Close All Apps
 Open Clock
     Execute Adb Shell        monkey -p com.sec.android.app.clockpackage 1
     Wait Until Element Is Visible    id=com.sec.android.app.clockpackage:id/menu_alarm_add
+
 Click Set Alarm Button
     Click Element    id=com.sec.android.app.clockpackage:id/menu_alarm_add
     Capture Page Screenshot
@@ -50,7 +65,7 @@ Set Alarm in 2 minutes
     Input Text    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TimePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.EditText    text=${current_hour}
     Execute Adb Shell    input keyevent 66
     ${current_min}    Get Current Date    result_format=%M
-    ${current_min}    Evaluate    ${current_min} + 2
+    ${current_min}    Evaluate    int(${current_min}) + 2
     Input Text    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TimePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.EditText    text=${current_min} 
     Execute Adb Shell    input keyevent 66
     
@@ -65,7 +80,6 @@ Save Alarm
     Click Element    id=com.sec.android.app.clockpackage:id/menu_done
 
 Detect Alarm
-    Sleep     120
     Capture Page Screenshot
 
 
