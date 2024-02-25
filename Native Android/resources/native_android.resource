@@ -65,8 +65,9 @@ Set Alarm in 2 minutes
     Input Text    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TimePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.EditText    text=${current_hour}
     Execute Adb Shell    input keyevent 66
     ${current_min}    Get Current Date    result_format=%M
-    ${current_min}    Evaluate    int(${current_min}) + 2
-    Input Text    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TimePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.EditText    text=${current_min} 
+    ${current_min_treat}    Evaluate    int(${current_min})
+    ${final_value}    Evaluate    ${current_min_treat} + 2
+    Input Text    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TimePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.EditText    text=${final_value} 
     Execute Adb Shell    input keyevent 66
     
 Set Alarm Name 
@@ -81,6 +82,14 @@ Save Alarm
 
 Detect Alarm
     Capture Page Screenshot
+
+Get Sales Code     
+    ${sales_code}    Execute Adb Shell    getprop ro.csc.sales_code    
+    Set Variable      ${sales_code.strip()}
+    Log    ${sales_code}
+
+    
+
 
 
     

@@ -42,3 +42,7 @@ Inicie o Servidor Appium, a flag --allow-insecure=adb_shell permite comandos ADB
   appium --allow-insecure=adb_shell
 ```
 
+
+## Próximos passos
+
+- Utilizar o Appium Container

@@ -1,3 +1,6 @@
 output.xml
 report.html
+log.html
 .result
+interactive_console_output.xml
+getproplist.txt
