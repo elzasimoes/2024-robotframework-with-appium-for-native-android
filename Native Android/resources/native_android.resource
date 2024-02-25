@@ -3,12 +3,16 @@ Library      AppiumLibrary
 Library    DateTime
 
 *** Variables ***
-${PLATFORM_NAME}        Android
-${PLATFORM_VERSION}     14
-${URL}      http://localhost:4723/wd/hub  # URL do servidor Appium
+${URL}      http://127.0.0.1:4723
 ${expected_model}    SM-F731B
+${ANDROID_AUTOMATION_NAME}    UIAutomator2
+${ANDROID_PLATFORM_NAME}      Android
+${ANDROID_PLATFORM_VERSION}   %{ANDROID_PLATFORM_VERSION=14}
 
 *** Keywords ***
+Initialize Device
+  Open Application      ${URL}      automationName=${ANDROID_AUTOMATION_NAME}
+  ...  platformName=${ANDROID_PLATFORM_NAME}      platformVersion=${ANDROID_PLATFORM_VERSION}
 
 Initialize Test
     Go To Home Screen

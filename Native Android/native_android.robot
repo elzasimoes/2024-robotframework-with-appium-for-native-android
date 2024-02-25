@@ -1,6 +1,6 @@
 *** Settings ***
 Resource        ./resources/native_android.resource
-Suite Setup      Open Application    ${URL}        platformName=${PLATFORM_NAME}
+Suite Setup      Initialize Device
 
 Test Setup     Initialize Test
 Test Teardown    Close All Apps
